@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import glob
+import subprocess
 
 REMOVE_FILES =[
      {% if cookiecutter.flavor == "javascript" %}
@@ -18,3 +19,5 @@ for fileExtension in REMOVE_FILES:
                 os.remove(filePath)
             except:
                 print("Error while deleting file : ", filePath)
+
+subprocess.check_call('npm i', shell=True)

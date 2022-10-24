@@ -21,3 +21,6 @@ for fileExtension in REMOVE_FILES:
                 print("Error while deleting file : ", filePath)
 
 subprocess.check_call('npm i', shell=True)
+
+if os.environ.get('HOST_USER_ID', '0') != '0' and os.environ.get('HOST_GROUP_ID', '0') != '0':
+    subprocess.check_call('chown -R $HOST_USER_ID:$HOST_GROUP_ID $(pwd)', shell=True)
